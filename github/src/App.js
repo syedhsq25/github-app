@@ -14,7 +14,7 @@ function App() {
           {
             auth: {
               username: "syedhsq25",
-              password: "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"
+              password: "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"
             }
           })
         setUsers(data);
