@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import NavBar from "./Components/NavBar";
 import Users from "./Components/Users";
 import "./App.css"
+import Search from "./Components/Search";
 
 import axios from "axios";
 function App() {
@@ -14,7 +15,7 @@ function App() {
           {
             auth: {
               username: "syedhsq25",
-              password: "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"
+              password: "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"
             }
           })
         setUsers(data);
@@ -28,10 +29,23 @@ function App() {
     getData();
 
   }, [])
+
+  const searchUsers = async (username) => {
+    try {
+      const { data } = await axios.get(`https://api.github.com/search/users?q=${username}`)
+      setUsers(data.items)
+      console.log(data.items)
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
   return (<>
     <NavBar />
+
+    <Search searchUsers={searchUsers} />
     <div className="container">
-      <Users users={users}  />
+      <Users users={users} />
     </div>
   </>
   )
