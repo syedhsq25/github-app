@@ -1,12 +1,16 @@
 
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function UserItems({ user }) {
     return (
         <div className="card text-center">
             <img src={user.avatar_url} alt="avatar" style={{ width: "120px" }} />
             <h3>{user.login}</h3>
-        </div>
+
+            <div>
+                <Link to={user.html_url} className="btn btn-dark">Git profile</Link>
+            </div></div>
     )
 }
 
