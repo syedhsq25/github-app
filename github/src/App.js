@@ -6,11 +6,16 @@ import Users from "./Components/Users";
 import Search from "./Components/Search";
 import Loading from "./Components/Loading";
 import Alert from "./Components/Alert";
+import Contact from "./Components/Contact";
+import About from "./Components/About";
+// import UserPage from "./Components/UserPage";
+//Routes logic
+import { Routes, Route } from "react-router-dom";
 function App() {
 
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [alert,setalert]=useState([])
+  const [alert, setAlert] = useState(null);
   useEffect(() => {
     const getData = async () => {
       try {
@@ -49,15 +54,40 @@ function App() {
 
   const clearUsers = () => {
     setUsers([]);
-  }
+  };
+
+  //Giving Alerts
+
+  const showAlert = (alert) => {
+    setAlert(alert);
+    setTimeout(() => {
+      setAlert(null);
+    }, 3000);
+  };
   return (<>
     <NavBar />
-    {loading && <Loading />}
-    <div className="container">
-      <Alert />
-      <Search searchUsers={searchUsers} clearUsers={clearUsers} />
-      <Users users={users} />
-    </div>
+    <Routes>
+
+      <Route path="/" element={(
+        <>
+          <div className="container">
+
+            <Alert alert={alert} />
+            <Search searchUsers={searchUsers} clearUsers={clearUsers} showAlert={showAlert} />
+
+            {loading && <Loading />}
+            <Users users={users} />
+
+          </div>
+
+        </>
+      )}>
+
+      </Route>
+      <Route path="/contact" element={<Contact />}></Route>
+      <Route path="/about" element={<About />}></Route>
+
+    </Routes>
   </>
   )
 }

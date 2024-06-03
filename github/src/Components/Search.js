@@ -1,14 +1,18 @@
 import { useState } from "react";
-function Search({ searchUsers, clearUsers }) {
+function Search({ searchUsers, clearUsers, showAlert }) {
     const [username, setUsername] = useState("")
     const onChangeHandler = (e) => {
         setUsername(e.target.value)
     }
     const onSubmitHandler = (ev) => {
         ev.preventDefault();
-        searchUsers(username);
+        if(username===''){
+            showAlert({msg:"username cant be empty" , type:"danger" });
+        }else{
+       searchUsers(username);
         setUsername("");
-
+        }
+    
     }
     return (
         <>

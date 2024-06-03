@@ -1,8 +1,10 @@
-function Alert() {
-    return (<>
-        <div className="alert alert-danger">
-            Something is wrong
+function Alert({ alert }) {
+    return (
+        alert!==null && (
+        <div className={`alert alert-${alert.type}`}>
+        {alert.msg}
         </div>
-    </>)
+    ))
 }
+
 export default Alert;
