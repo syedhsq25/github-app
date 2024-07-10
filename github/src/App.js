@@ -3,6 +3,7 @@ import "./App.css"
 import axios from "axios";
 import NavBar from "./Components/NavBar";
 import Users from "./Components/Users";
+import UserPage from "./Components/UserPage";
 import Search from "./Components/Search";
 import Loading from "./Components/Loading";
 import Alert from "./Components/Alert";
@@ -86,6 +87,8 @@ function App() {
       </Route>
       <Route path="/contact" element={<Contact />}></Route>
       <Route path="/about" element={<About />}></Route>
+      <Route path="/username" element={<UserPage />}></Route>
+
 
     </Routes>
   </>

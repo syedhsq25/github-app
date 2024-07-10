@@ -9,7 +9,7 @@ function UserItems({ user }) {
             <h3>{user.login}</h3>
 
             <div>
-                <Link to={user.html_url} className="btn btn-dark">Git profile</Link>
+                <Link to={`/user/${user.login}`} className="btn btn-dark">Git profile</Link>
             </div></div>
     )
 }
